@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c88q6pkhh3vl"]
+
+[ext_resource type="Shader" path="res://effects/white_flash_material.gdshader" id="1_t2u32"]
+
+[resource]
+shader = ExtResource("1_t2u32")
