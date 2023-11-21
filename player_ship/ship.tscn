@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b67qjuigi4dvn"]
+[gd_scene load_steps=22 format=3 uid="uid://b67qjuigi4dvn"]
 
 [ext_resource type="Script" path="res://player_ship/ship.gd" id="1_mqtmi"]
 [ext_resource type="Texture2D" uid="uid://csv6axkat2gqy" path="res://assets/ship.png" id="1_r7y1d"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="7_26x81"]
 [ext_resource type="PackedScene" uid="uid://3c0cr3714r4k" path="res://projectiles/laser.tscn" id="8_ypby4"]
 [ext_resource type="Script" path="res://components/scale_component.gd" id="9_72otb"]
+[ext_resource type="Texture2D" uid="uid://cmfx7uwiptxam" path="res://assets/ship_flame.png" id="10_svgp4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_an4xm"]
 atlas = ExtResource("1_r7y1d")
@@ -49,11 +50,80 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn5im"]
+atlas = ExtResource("10_svgp4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36k3p"]
+atlas = ExtResource("10_svgp4")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7ayw"]
+atlas = ExtResource("10_svgp4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nitdh"]
+atlas = ExtResource("10_svgp4")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4htw3"]
+atlas = ExtResource("10_svgp4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osne7"]
+atlas = ExtResource("10_svgp4")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u31ju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn5im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36k3p")
+}],
+"loop": true,
+"name": &"bank_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7ayw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nitdh")
+}],
+"loop": true,
+"name": &"bank_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4htw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osne7")
+}],
+"loop": true,
+"name": &"center",
+"speed": 10.0
+}]
+
 [node name="Ship" type="Node2D"]
 script = ExtResource("1_mqtmi")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Anchor" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor"]
 sprite_frames = SubResource("SpriteFrames_h24ni")
+animation = &"center"
+autoplay = "center"
+
+[node name="FlameAnimatedSprite" type="AnimatedSprite2D" parent="Anchor"]
+unique_name_in_owner = true
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_u31ju")
 animation = &"center"
 autoplay = "center"
 
@@ -86,4 +156,4 @@ autostart = true
 
 [node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("9_72otb")
-sprite = NodePath("../AnimatedSprite2D")
+sprite = NodePath("../Anchor")
