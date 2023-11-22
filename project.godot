@@ -23,6 +23,11 @@ window/size/window_width_override=640
 window/size/window_height_override=960
 window/stretch/mode="canvas_items"
 
+[layer_names]
+
+2d_physics/layer_1="player_hurtbox"
+2d_physics/layer_2="enemy_hurtbox"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
