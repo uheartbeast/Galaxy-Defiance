@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bktwta6pv6xtu"]
+[gd_scene load_steps=5 format=3 uid="uid://bktwta6pv6xtu"]
 
 [ext_resource type="PackedScene" uid="uid://b67qjuigi4dvn" path="res://player_ship/ship.tscn" id="1_u8akh"]
+[ext_resource type="Script" path="res://world.gd" id="1_w8tcu"]
 [ext_resource type="PackedScene" uid="uid://qbxorymo61wc" path="res://effects/space_background.tscn" id="2_r2wj6"]
 [ext_resource type="PackedScene" uid="uid://bjhmek36bubm5" path="res://enemies/enemy_generator.tscn" id="3_s2tto"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_w8tcu")
 
 [node name="Ship" parent="." instance=ExtResource("1_u8akh")]
 position = Vector2(80, 216)
