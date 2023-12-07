@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv5yqsimnkcnh"]
+[gd_scene load_steps=6 format=3 uid="uid://dv5yqsimnkcnh"]
 
 [ext_resource type="Script" path="res://menus/game_over.gd" id="1_i88yp"]
 [ext_resource type="PackedScene" uid="uid://qbxorymo61wc" path="res://effects/space_background.tscn" id="1_jicsx"]
+[ext_resource type="Resource" uid="uid://bfkadquef4i33" path="res://game_stats.tres" id="2_b3can"]
 [ext_resource type="LabelSettings" uid="uid://lyux8pgux32t" path="res://fonts/title_label_settings.tres" id="2_hgl8r"]
 [ext_resource type="LabelSettings" uid="uid://b4kbn4k1bdngv" path="res://fonts/default_label_settings.tres" id="3_k64km"]
 
@@ -13,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i88yp")
+game_stats = ExtResource("2_b3can")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("1_jicsx")]
 
@@ -32,6 +34,40 @@ layout_mode = 2
 text = "Game Over"
 label_settings = ExtResource("2_hgl8r")
 horizontal_alignment = 1
+
+[node name="ScoreHBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/ScoreHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Score:"
+label_settings = ExtResource("3_k64km")
+
+[node name="ScoreValue" type="Label" parent="CenterContainer/VBoxContainer/ScoreHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("3_k64km")
+
+[node name="HighscoreHBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HighscoreLabel" type="Label" parent="CenterContainer/VBoxContainer/HighscoreHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Highscore:"
+label_settings = ExtResource("3_k64km")
+
+[node name="HighscoreValue" type="Label" parent="CenterContainer/VBoxContainer/HighscoreHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("3_k64km")
+
+[node name="Space" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 
 [node name="MenuLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
