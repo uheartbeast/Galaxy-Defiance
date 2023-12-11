@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjhmek36bubm5"]
+[gd_scene load_steps=6 format=3 uid="uid://bjhmek36bubm5"]
 
 [ext_resource type="Script" path="res://enemies/enemy_generator.gd" id="1_sm802"]
 [ext_resource type="PackedScene" uid="uid://bqb20vy65veg1" path="res://enemies/green_enemy.tscn" id="2_kxqcx"]
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="2_tnmh3"]
 [ext_resource type="PackedScene" uid="uid://yxlc4bgwacxg" path="res://enemies/yellow_enemy.tscn" id="3_k36sq"]
+[ext_resource type="PackedScene" uid="uid://dp3vlp6van6sj" path="res://enemies/pink_enemy.tscn" id="4_snjeq"]
 
 [node name="EnemyGenerator" type="Node2D"]
 script = ExtResource("1_sm802")
 GreenEnemyScene = ExtResource("2_kxqcx")
 YellowEnemyScene = ExtResource("3_k36sq")
+PinkEnemyScene = ExtResource("4_snjeq")
 
 [node name="SpawnerComponent" type="Node2D" parent="."]
 script = ExtResource("2_tnmh3")
@@ -20,5 +22,10 @@ autostart = true
 
 [node name="YellowEnemySpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="PinkEnemySpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
 one_shot = true
 autostart = true
